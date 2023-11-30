@@ -1,2 +1,2 @@
 # Web-development
-www.s7.ru
+www.istu.edu/schedule
