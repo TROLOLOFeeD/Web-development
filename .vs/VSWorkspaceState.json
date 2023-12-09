@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\client",
+    "\\server"
   ],
+  "SelectedNode": "\\Scrap.py",
   "PreviewInSolutionExplorer": false
 }

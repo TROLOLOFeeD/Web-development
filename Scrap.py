@@ -1,6 +1,8 @@
+from cgitb import text
 from os import name
 import requests
 import lxml
+import sqlite3
 from bs4 import BeautifulSoup
 
 class Group:
@@ -56,9 +58,9 @@ if __name__ == "__main__":
 
 print ("Enter group name")
 name = input()
-for i in range (len(GList)):
-    if name == GList[i].name:
-        num = GList[i].num
+for d in range (len(GList)):
+    if name == GList[d].name:
+        num = GList[d].num
 url = f"https://www.istu.edu/schedule/?group={num}"
 response = requests.get(url)
 if response.status_code == 200:
@@ -67,19 +69,33 @@ soup = BeautifulSoup(response.content, 'lxml')
 days = soup.find_all('h3', class_='day-heading')
 times = soup.find_all('div', class_='class-time')
 infos = soup.find_all('div', class_='class-info')
-preps = soup.find_all('a')
 preds = soup.find_all('div', class_='class-pred')
 #for day in days:
 #    day.text
     #print(day)
-c_day = [blyat.text for blyat in days]
-for i in range(len(days)):
-    print(c_day[i])
-    for i in range(len(times)):
-        print(times[i].text)
-        print(infos[i].text, ' ', preps[i].text)
-        print(preds[i].text)
-        i += 1
-        print(infos[i].text)
+c_day = [tmp.text for tmp in days]
+t = 0
+for d in range(len(days)):
+    print(c_day[d])
 
-        
+    #for t in range(len(times)):
+    #    if (times[t].text>times[t+1].text):
+    #        print (times[t].text)
+    #    else:
+    #        break
+
+    
+    #for k in range(len(times)):
+    #    print(times[k].text)
+    #    print (infos[j].text)
+    #    j += 1
+    #    print(preds[i*len(times)+k].text)
+    #    print(infos[j].text)
+
+
+for i in range(len(times)):
+    print(times[i].text, " times ", i)
+#for i in range(len(infos)):
+#    print(infos[i].text, " info ", i)
+#for i in range(len(preds)):
+#    print(preds[i].text, " ][uy ", i)
