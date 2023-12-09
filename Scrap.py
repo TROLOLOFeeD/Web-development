@@ -92,9 +92,8 @@ for d in range(len(days)):
     #    print(preds[i*len(times)+k].text)
     #    print(infos[j].text)
 
-
-for i in range(len(times)):
-    print(times[i].text, " times ", i)
+#for i in range(len(times)):
+#    print(times[i].text, " times ", i)
 #for i in range(len(infos)):
 #    print(infos[i].text, " info ", i)
 #for i in range(len(preds)):
