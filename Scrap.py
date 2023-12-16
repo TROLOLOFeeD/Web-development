@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import sqlite3
 
-#class for link id group n' group name
+#class for link id group with group name
 class Group:
 	def __init__(self, name, num):
 		self.name = name
@@ -24,7 +24,7 @@ def main():
 		links = doc.select("ul a")
 		for link in links:
 			href = link['href']
-			# Разбиваем строку href на параметры
+			# split the href line into parameters
 			params = href.split("?")
 			if len(params) == 2:
 				keyValuePairs = params[1].split("&")
@@ -34,16 +34,16 @@ def main():
 						subdivValue = keyValue[1]
 						url2 = f"https://www.istu.edu/schedule/?subdiv={subdivValue}"
 						try:
-							# Получаем HTML-код страницы
+							# gettin HTML-code of page
 							response2 = requests.get(url2)
 							doc2 = BeautifulSoup(response2.text, 'html.parser')
-							# Находим все теги <a> внутри страницы
+							# searchin all <a> selectors on a page
 							links2 = doc2.select("a[href]")
-							# Итерируемся по найденным ссылкам
+							# iterate through found links
 							for link2 in links2:
 								href2 = link2['href']
 								group_name = link2.text
-								# Проверяем, содержит ли href атрибут "group"
+								# checkin if the href contains "group" attribute
 								if "group=" in href2:
 									groupValue = href2.split("group=")[1].split("&")[0]
 									# group="$text $groupValue"
