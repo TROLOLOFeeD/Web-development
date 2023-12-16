@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import sqlite3
 
-#класс для привязки id группы к её названию
+#class for link id group n' group name
 class Group:
 	def __init__(self, name, num):
 		self.name = name
@@ -15,7 +15,7 @@ class Group:
 		print(num)
 
 GList = list()
-#перенос всех групп
+#fillin group list
 def main():
 	url = "https://www.istu.edu/schedule/"
 	try:
@@ -55,19 +55,19 @@ def main():
 
 if __name__ == "__main__":
     main()
-#ввод названия группы, перенос его id в url
+#input group name and searchin its id
 name = input()
 for d in range (len(GList)):
     if name == GList[d].name:
         num = GList[d].num
 url = f"https://www.istu.edu/schedule/?group={num}"
-#получение расписания группы
+#gettin group schedule
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'lxml')
 days = soup.find_all('h3', class_='day-heading')
 it = soup.find_all('div', class_='class-lines')
 items = soup.find_all('div', class_='class-line-item')
-#создание базы данных с расписанием группы
+#create database with schedule
 conn = sqlite3.connect('schedule.db')
 cursor = conn.cursor()
 conn.commit()
@@ -82,21 +82,21 @@ cursor.execute('''
 		room TEXT,
 		info TEXT)
 	''')
-#выделение нужных элементов (надо будет разделить двойные пары)
+#selecting the necessary elements (i need to separate double pairs)
 for item in items:
 	subject = item.find('div', class_='class-pred').text
 	info = item.find('div', class_='class-info').text
 	room = item.find('div', class_='class-aud').text
-	#внесение их в бд
+	#fillin the database
 	cursor.execute('''INSERT INTO schedule (subject, room, info)
 		VALUES (?, ?, ?)
 		''', (subject, room, info))
-#Также внесение в бд дат (надо будет их расфасовать по парам)
+#also fillin the db with days (also i need pack days by their pairs)
 for day in days:
 	cursor.execute('''INSERT INTO schedule (day)
 		VALUES (?)
 		''', (day.text,))
 
-#сохраняем и закрываем бд
+#save an close db
 conn.commit()
 conn.close()
