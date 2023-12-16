@@ -5,6 +5,7 @@
 
 # My files to Ignore
 .vs
+.wsuo
 
 # User-specific files
 *.rsuser
