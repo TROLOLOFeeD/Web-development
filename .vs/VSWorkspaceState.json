@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\client",
+    "\\ScheduleApp",
+    "\\ScheduleApp\\app",
+    "\\ScheduleApp\\app\\migrations",
     "\\server"
   ],
-  "SelectedNode": "\\Output.py",
+  "SelectedNode": "\\ScheduleApp\\manage.py",
   "PreviewInSolutionExplorer": false
 }

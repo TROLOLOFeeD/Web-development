@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Уроки</title>
+</head>
+<body>
+    <h1>Расписание уроков</h1>
+    <table>
+        <tr>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Subject</th>
+            <th>Classroom</th>
+            <th>Description</th>
+        </tr>
+        {% for lesson in lessons %}
+        <tr>
+            <td>{{ lesson.day }}</td>
+            <td>{{ lesson.time }}</td>
+            <td>{{ lesson.subject }}</td>
+            <td>{{ lesson.room }}</td>
+            <td>{{ lesson.description }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
