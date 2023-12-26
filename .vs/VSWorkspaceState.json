@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\client",
-    "\\ScheduleApp",
-    "\\ScheduleApp\\app",
-    "\\ScheduleApp\\app\\migrations",
+    "\\Django",
+    "\\Django\\Django",
+    "\\Django\\env",
+    "\\Django\\env\\app",
     "\\server"
   ],
-  "SelectedNode": "\\ScheduleApp\\manage.py",
+  "SelectedNode": "\\Django\\env\\app\\models.py",
   "PreviewInSolutionExplorer": false
 }

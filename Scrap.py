@@ -71,7 +71,7 @@ items = soup.find_all('div', class_='class-line-item')
 conn = sqlite3.connect('schedule.db')
 cursor = conn.cursor()
 conn.commit()
-#cursor.execute("DROP TABLE schedule;")
+# cursor.execute("DROP TABLE schedule;")
 
 cursor.execute('''
 	CREATE TABLE IF NOT EXISTS schedule (
